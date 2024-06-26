@@ -1,11 +1,14 @@
 <!doctype html>
+<!-- don't ask for favicon -->
+<link rel="icon" href="data:,">
 <script type="module">
   import { Component, Page } from '@samzofkie/component';
   import { FlashcardDeck } from './src/FlashcardDeck.js';
   import { Flashcard } from './src/Flashcard.js';
+  import { Graph } from './src/Graph.js';
   import { V8ClassDescriptions } from './v8-class-descriptions.js';
 
-  new Page(
+  let a = new Page(
     'learner',
     {
       backgroundColor: '#2d2c45',
@@ -27,8 +30,9 @@
         href: 'https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap'
       }
     ),
-    new FlashcardDeck(
-      ...V8ClassDescriptions.map(data => new Flashcard(data))
-    ),
   );
+    
+  document.body.onload = event => {
+    a.append(new Graph(V8ClassDescriptions));
+  }
 </script>
