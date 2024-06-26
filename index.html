@@ -1,0 +1,34 @@
+<!doctype html>
+<script type="module">
+  import { Component, Page } from '@samzofkie/component';
+  import { FlashcardDeck } from './src/FlashcardDeck.js';
+  import { Flashcard } from './src/Flashcard.js';
+  import { V8ClassDescriptions } from './v8-class-descriptions.js';
+
+  new Page(
+    'learner',
+    {
+      backgroundColor: '#2d2c45',
+      color: 'black',
+      fontSize: '15px',
+      fontFamily: 'Work Sans, Arial, Helvetica, sans-serif',
+    },
+    new Component(
+      'meta',
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1',
+      },
+    ),
+    new Component(
+      'link',
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap'
+      }
+    ),
+    new FlashcardDeck(
+      ...V8ClassDescriptions.map(data => new Flashcard(data))
+    ),
+  );
+</script>
